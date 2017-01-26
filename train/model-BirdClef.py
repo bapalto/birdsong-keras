@@ -1,0 +1,87 @@
+# -*- coding: utf-8 -*-
+#
+#################################################################################################
+#
+# (c) Balint Czeba, Balint Pal Toth
+# 
+# If you use this code thank you for referring to the corresponding paper:
+# 
+# Tóth Bálint Pál, Czeba Bálint,
+# "Convolutional Neural Networks for Large-Scale Bird Song Classification in Noisy Environment", 
+# In: Working Notes of Conference and Labs of the Evaluation Forum, Évora, Portugália, 2016, p. 8
+# 
+#################################################################################################
+# 
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#################################################################################################
+
+from keras.models import Sequential
+from keras.layers.core import Dense, Activation, Dropout, Flatten
+from keras.optimizers import SGD, RMSprop
+from keras.layers.recurrent import LSTM
+from keras.callbacks import EarlyStopping, ModelCheckpoint
+from keras.layers.convolutional import Convolution2D,  MaxPooling2D 
+from keras.layers import BatchNormalization
+
+model = Sequential()
+
+# convolutional layers
+model.add(Convolution2D(input_shape=(1,200,310),
+                        nb_filter=128,
+                        nb_row=16,
+                        nb_col=16,
+                        border_mode='valid',
+                        init='lecun_uniform',
+                        activation='relu',
+                        subsample=(8, 8)
+                        ))
+model.add(MaxPooling2D(pool_size=(2,2)))
+
+model.add(Convolution2D(nb_filter=256,
+                        nb_row=5,
+                        nb_col=3,
+                        border_mode='valid',
+                        init='lecun_uniform', 
+                        activation='relu'
+                        ))
+model.add(BatchNormalization())                        
+model.add(MaxPooling2D(pool_size=(2,2)))
+
+model.add(Convolution2D(nb_filter=384,
+                        nb_row=3,
+                        nb_col=3,
+                        border_mode='same',
+                        init='lecun_uniform', 
+                        activation='relu'
+                        ))
+
+model.add(Convolution2D(nb_filter=384,
+                        nb_row=3,
+                        nb_col=3,
+                        border_mode='same',
+                        init='lecun_uniform', 
+                        activation='relu'
+                        )) 
+                        
+model.add(BatchNormalization())                        
+model.add(MaxPooling2D(pool_size=(2,2))) 
+                   
+# dense layers
+model.add(Flatten())
+model.add(Dense(2048, activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(2048, activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(output_dim=output_dim, activation='softmax'))
