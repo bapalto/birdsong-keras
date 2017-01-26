@@ -54,7 +54,7 @@ train/MAPCallback.py    - Script to calculate MAP scores during training the neu
 train/generateImages.py - Generate images from the preprocessed spectogram for visualization purposes
 train/io_utils_mod.py   - Functions for loading and saving data to HDF5
 train/log.py            - Functions for logging purposes
-predict/predict.py	- Predict after preprocessing and training is done
+predict/predict.py      - Predict after preprocessing and training is done
 ```
 
 # Training (and download data and preprocess)
