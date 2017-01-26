@@ -1,16 +1,28 @@
 # -*- coding: utf-8 -*-
 #
-#################################################################################################
+# Birdsong classificatione in noisy environment with convolutional neural nets in Keras
+# Copyright (C) 2017 Báint Czeba, Bálint Pál Tóth (toth.b@tmit.bme.hu)
 #
-# (c) Balint Czeba, Balint Pal Toth
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>. (c) Balint Czeba, Balint Pal Toth
 # 
-# If you use this code thank you for referring to the corresponding paper:
+# Please cite the following paper if this code was useful for your research:
 # 
-# Tóth Bálint Pál, Czeba Bálint,
+# Bálint Pál Tóth, Bálint Czeba,
 # "Convolutional Neural Networks for Large-Scale Bird Song Classification in Noisy Environment", 
 # In: Working Notes of Conference and Labs of the Evaluation Forum, Évora, Portugália, 2016, p. 8
-# 
-#################################################################################################
+
+# this script is responsible for training the neural networks
 
 from scipy import io
 import pandas as pd
