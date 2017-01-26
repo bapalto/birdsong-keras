@@ -1,4 +1,4 @@
-# Trainig scripts for deep convolutional neural network based audio classification
+# Trainig scripts for deep convolutional neural network based audio classification in Keras
 
 The following scripts were created for the BirdCLEF 2016 competition by Bálint Czeba and Bálint Pál Tóth.
 
