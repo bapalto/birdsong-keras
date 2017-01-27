@@ -41,6 +41,8 @@ sudo apt-get install sox
 ```
 Keras: https://keras.io/#installation
 
+The code is tested under Python 2.7.
+
 # Directory structure and files 
 ```
 doall.sh                - run this script and it will do everything (you will need plenty of disk space > 100 GB)
