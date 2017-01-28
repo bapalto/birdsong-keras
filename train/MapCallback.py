@@ -24,10 +24,10 @@ class Callback(object):
     def __init__(self):
         pass
 
-    def _set_params(self, params):
+    def set_params(self, params):
         self.params = params
 
-    def _set_model(self, model):
+    def set_model(self, model):
         self.model = model
 
     def on_epoch_begin(self, epoch, logs={}):
@@ -74,10 +74,10 @@ class MapCallback(Callback):
     def __init__(self):
         super(Callback, self).__init__()
 
-    def _set_params(self, params):
+    def set_params(self, params):
         self.params = params
 
-    def _set_model(self, model):
+    def set_model(self, model):
         self.model = model
 
     def on_epoch_begin(self, epoch, logs={}):

@@ -41,7 +41,13 @@ sudo apt-get install sox
 ```
 Keras: https://keras.io/#installation
 
-The code is tested under Python 2.7.
+The code is tested under Python 2.7. with TensorFlow backend, NVidia Titan X 12GB GPU.
+
+If you use TensorFlow as a backend you should set
+```
+"image_dim_ordering": "th",
+```
+in ~/.keras/keras.json configuration file.
 
 # Directory structure and files 
 ```

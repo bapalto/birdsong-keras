@@ -51,7 +51,7 @@ PATH_TEST_OUT_XMLPICKLEFILE	= '../birdclef_data/test/xml_data.pickle'
 # this parameter is used for preprocessing
 # the number comes from the following equation: np.floor(sampling_frequency/(FFT_length-FFT_overlap))*num_of_seconds
 # we use 16kHz sampling rate for the wavs, 512 FFT window length with 256 overlap and we investigate 5 seconds 
-spectrogramWindowLength = 5*np.floor(16000/(512-256)); 
+spectrogramWindowLength = int(5*np.floor(16000/(512-256))); 
 
 # function to load the wave files from dirPath
 def loadWavs(dirPath):
@@ -122,6 +122,8 @@ def audioToFilteredSpectrogram(data, expandByOne = True, dropZeroColumnsPercent 
     # to achieve better accuray the size of this cell should be finetuned
     rowBorders = np.ceil(np.linspace(0,tempSpec.shape[0], 20))
     columnBorders = np.hstack((np.ceil(np.arange(0,tempSpec.shape[1], 30)), tempSpec.shape[1]))
+    rowBorders = [ int(x) for x in rowBorders ]
+    columnBorders = [ int(x) for x in columnBorders ]
     keepCells = np.ones((len(rowBorders)-1, len(columnBorders)-1))
 
     # we create a mask for the spectogram: we scan the spectogram with the 20x30 sized
@@ -247,7 +249,7 @@ def spectrogramListToT4(slist, labels=None, N=spectrogramWindowLength, filenames
 
     # process all spectograms
     for i in range(len(slist)):
-        print('\r    Processing no. {} / {}'.format(i, len(slist))),
+        print('\r    Processing no. %d / %d' % (i, len(slist)))
         ranges = np.hstack((np.arange(0, len(slist[i][0]), N), len(slist[i][0])))
 
         for j in range(len(ranges)-1):
@@ -270,7 +272,7 @@ def spectrogramListToT4(slist, labels=None, N=spectrogramWindowLength, filenames
             if classIds is not None:
                 cIds.append(classIds[i])
 
-    print("\nSpectrogramListToT4 finished")
+    print("SpectrogramListToT4 finished")
     return X, y, fn, cIds
 
 # calculates the standard scaler coefficients of the input data for 0 mean and 1 variance
@@ -392,7 +394,7 @@ df_xml.to_pickle(PATH_TRAIN_OUT_XMLPICKLEFILE) # save the loaded meta-data into 
 print("Process wav files and save them into HDF5")
 (X, y, fn)	= processNMostCommon(999, wavdirpath=PATH_TRAIN_IN_16KWAVS, xmlpicklepath=PATH_TRAIN_OUT_XMLPICKLEFILE, todirrootpath=PATH_TRAIN_OUT_HDF5) # processes the most common 999 species (so the whole dataset)
 print("Generating scaler")
-scaler, data	= generateScaler(5000, wavdirpath=PATH_TRAIN_IN_16KWAVS, xmlpicklepath=PATH_TRAIN_OUT_XMLPICKLEFILE, todirrootpath=PATH_TRAIN_OUT_HDF5) # calculates and saves the standard scaler based on 2000 wav files
+scaler, data	= generateScaler(5000, wavdirpath=PATH_TRAIN_IN_16KWAVS, xmlpicklepath=PATH_TRAIN_OUT_XMLPICKLEFILE, todirrootpath=PATH_TRAIN_OUT_HDF5) # calculates and saves the standard scaler based on 5000 wav files
 
 print("== Generating test data ==")
 print("Reading XML files and generating pickle file")
