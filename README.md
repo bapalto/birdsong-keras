@@ -35,12 +35,16 @@ Download from here (PDF): http://ceur-ws.org/Vol-1609/16090560.pdf
 ```
 
 # Prerequisites
-You will need SOX for wave file resampling and Keras deep learning frameworks. At the time of writeing you can install them in the following way:
+You will need SOX for wave file resampling and Keras deep learning frameworks and some necessary modules. At the time of writeing you can install them in the following way:
 ```
 sudo apt-get install sox
+sudo apt-get install python-tk
+sudo pip install scipy
+sudo pip install matplotlib
+sudo pip install sklearn
+sudo pip install tensorflow-gpu
+sudo pip install keras
 ```
-Keras: https://keras.io/#installation
-
 The code is tested under Python 2.7. with TensorFlow backend, NVidia Titan X 12GB GPU.
 
 If you use TensorFlow as a backend you should set
@@ -75,7 +79,9 @@ Be aware that this will download all the data (>50 GB) from http://otmedia.lirmm
 ```
 birdclef_data
 ```
-directory, unpack it and resample to 16 kHz and preprocess it into HDF5 files. You need cca. XXXXXXX GB of free space for the whole process. If you would like to put the data to somewhere else, please modify the doall.sh, preprocess/loadData.py and train/trainModel.py scripts.
+directory, unpack it and resample to 16 kHz and preprocess it into HDF5 files. You need cca. 280 GB of free space for the whole process. If you would like to put the data to somewhere else, please modify the doall.sh, preprocess/loadData.py and train/trainModel.py scripts.
+
+The download process, preprocessing and training takes 4-5 days on an i7 CPU + Titan X GPU.
 
 # Prediction
 

@@ -13,4 +13,4 @@ cd ..
 cd train
 mkdir modelWeights
 python trainModel.py
-
+cd ..
