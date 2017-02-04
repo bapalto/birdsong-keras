@@ -41,8 +41,8 @@ import loadData
 PATH_TEST_IN_16KWAVS            = '../birdclef_data/test/wav_16khz'
 PATH_TEST_IN_XMLPICKLEFILE      = '../birdclef_data/test/xml_data.pickle'
 modelPath			= './model-BirdClef.py'
-modelWeightsPath		= './modelWeights/best_val_map_999.hdf5' 
-labelBinarizerPath 		= "./modelWeights/labelBinarizer_top999.pickle"
+modelWeightsPath		= '../train/modelWeights/best_val_map_999.hdf5' 
+labelBinarizerPath 		= "../birdclef_data/labelBinarizer_top999.pickle"
 
 output_dim			= 999
 scalerFilePath = None
