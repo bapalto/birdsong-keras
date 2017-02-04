@@ -114,9 +114,11 @@ if preTrainedModelWeightsPath is not None:
 mapcallback	= MapCallback()
 earlyStopping	= EarlyStopping(monitor='val_loss', patience = es_patience) # early stoping
 # save best models based on accuracy, loss and MAP metrics
-bestModelFilePath_val_acc	= './modelWeights/best_val_acc_{}_{}.hdf5'.format(output_dim, datetime.datetime.now().strftime('%Y-%m-%d-%M-%S'))
-bestModelFilePath_val_loss	= './modelWeights/best_val_loss_{}_{}.hdf5'.format(output_dim, datetime.datetime.now().strftime('%Y-%m-%d-%M-%S'))
 #bestModelFilePath_val_map	= './modelWeights/best_val_map_{}_{}.hdf5'.format(output_dim, datetime.datetime.now().strftime('%Y-%m-%d-%M-%S'))
+#bestModelFilePath_val_acc	= './modelWeights/best_val_acc_{}_{}.hdf5'.format(output_dim, datetime.datetime.now().strftime('%Y-%m-%d-%M-%S'))
+#bestModelFilePath_val_loss	= './modelWeights/best_val_loss_{}_{}.hdf5'.format(output_dim, datetime.datetime.now().strftime('%Y-%m-%d-%M-%S'))
+bbestModelFilePath_val_acc	= './modelWeights/best_val_acc_{}.hdf5'.format(output_dim)
+bestModelFilePath_val_loss	= './modelWeights/best_val_loss_{}.hdf5'.format(output_dim)
 bestModelFilePath_val_map	= './modelWeights/best_val_map_{}.hdf5'.format(output_dim)
 checkpointer_val_acc	= ModelCheckpoint(filepath = bestModelFilePath_val_acc, verbose = 1, monitor = 'val_acc', save_best_only = True)
 checkpointer_val_loss	= ModelCheckpoint(filepath = bestModelFilePath_val_loss, verbose = 1, monitor = 'val_loss', save_best_only = True)

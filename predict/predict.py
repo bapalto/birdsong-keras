@@ -65,6 +65,7 @@ for opt, arg in opts:
         modelPath = arg
     elif opt in ("-s", "--s"):
         scalerFilePath = arg
+
 # function to convert probabilities to classes
 def proba_to_class(a):
     classCount	= len(a[0])
