@@ -40,7 +40,7 @@ import loadData
 # prediction related paths, should be consistent with /preprocess/loadData.py and /train/trainModel.py
 PATH_TEST_IN_16KWAVS            = '../birdclef_data/test/wav_16khz'
 PATH_TEST_IN_XMLPICKLEFILE      = '../birdclef_data/test/xml_data.pickle'
-modelPath			= './model-BirdClef.py'
+modelPath			= '../train/model-AlexNet.py'
 modelWeightsPath		= '../train/modelWeights/best_val_map_999.hdf5' 
 labelBinarizerPath 		= "../birdclef_data/labelBinarizer_top999.pickle"
 
@@ -109,8 +109,9 @@ model.load_weights(modelWeightsPath)
 ap=[]
 i=0
 
+# writeing predictions
 resultColumns = lb.inverse_transform(np.diag([1 for i in range(999)]))
-resultsFileName = "test_2015_{}_{}.txt".format(os.path.split(modelPath)[-1], datetime.datetime.now().strftime('%Y-%m-%d-%H-%M'))
+resultsFileName = "test_2015_{}_{}.csv".format(os.path.split(modelPath)[-1], datetime.datetime.now().strftime('%Y-%m-%d-%H-%M'))
 
 # running test with all the data
 for i in range(int(df.shape[0]*0.0),df.shape[0]):

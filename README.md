@@ -90,3 +90,4 @@ After the preprocessing and training is do simpy run the following script to mak
 ```
 ./predict.sh
 ```
+The prediction results will be written in a .csv file in the predict/ directory.
