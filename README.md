@@ -47,11 +47,13 @@ sudo pip install keras
 ```
 The code is tested under Python 2.7. with TensorFlow (GPU) 1.0.0a0 and Keras 1.1.1. backend, NVidia Titan X 12GB GPU.
 
-If you use TensorFlow as a backend you should set
+If you use TensorFlow as a backend with Keras 1.x you should set
 ```
 "image_dim_ordering": "th",
 ```
 in ~/.keras/keras.json configuration file.
+
+In Keras 2 "image_dim_ordering" is deprecated. If you use TensorFlow + Keras 2.x, you should change the "image_data_format" setting to "channels_first".
 
 # Directory structure and files 
 ```
